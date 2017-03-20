@@ -1,0 +1,56 @@
+*** Settings ***
+Library    AppiumLibrary    
+Variables    ../Settings/Settings.py
+
+*** Keywords ***
+Open Surge App
+    Open Application    ${serverurl}    appiumVersion=${appiumversion}    name=${testname}    platformName=Android    platformVersion=${platformversion}    deviceName=${devicename}    app=${app}
+    
+Navigate To Sign Up Screen
+    Click Button    ${signupbutton}    
+    Wait Until Page Contains    ${signuplogo}
+    
+Input Valid Values To Fields
+    Input Text    ${fieldemail}    ${user}
+    Input Text    ${fieldname}    tester 
+    Input Password    ${fieldpassword}    ${password}
+    
+Skip ${page} Page
+    Wait Until Page Contains Element   ${skipbutton}    15
+    Click Element    ${skipbutton}
+    
+Delete Account
+    Click Element    ${usericon}
+    Wait Until Page Contains    ${powerLikes}    30
+    Swipe On User Settings    
+    Click Button    ${accountsettings}
+    Wait Until Page Contains Element    ${privacy}   
+    Click Element    ${privacy}
+    Click Button    ${deleteaccountbutton}
+    Click Button    ${deleteaccountbutton}
+    Wait Until Page Contains Element    ${logInLink} 
+    
+Log Out
+    Click Element    ${usericon}
+    Wait Until Page Contains    ${powerLikes}    30 
+    Swipe On User Settings    
+    Click Button    ${accountsettings}
+    Swipe On Account Settings
+    Wait Until Page Contains    ${logOutButton}
+    Click Element    ${logOutObject}
+    Wait Until Page Contains    ${logOutButton}  
+    Click Button    ${logOutButton} 
+    
+Log In
+    [Arguments]    ${user}    ${password}
+    Wait Until Page Contains Element    ${logInLink}    
+    Click Element    ${logInLink}
+    Input Text    ${fieldemail}    ${user}
+    Input Password    ${fieldpassword}    ${password}
+    Click Button    ${logInButton} 
+    
+Swipe On User Settings 
+    Swipe    570    1879    570    670 
+    
+Swipe On Account Settings
+    Swipe    570    2500    570    150 

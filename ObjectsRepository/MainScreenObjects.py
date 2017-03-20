@@ -1,0 +1,1 @@
+userIcon = '//android.widget.ImageView[@resource-id="com.lavendrapp.lavendr:id/tab_icon_profile"]'

@@ -1,0 +1,11 @@
+*.log
+*.MF
+.project
+.pydevproject
+saucelabskey.txt
+*.png
+*.docx
+*.pdf
+
+
+

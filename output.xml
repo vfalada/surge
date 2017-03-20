@@ -1,53 +1,428 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generated="20170315 21:59:24.815" generator="Robot 3.0.2 (Python 2.7.12 on linux2)">
-<suite source="/home/fali/EclipseWrkSpc/SurgeTest" id="s1" name="SurgeTest">
-<suite source="/home/fali/EclipseWrkSpc/SurgeTest/Tests" id="s1-s1" name="Tests">
-<suite source="/home/fali/EclipseWrkSpc/SurgeTest/Tests/Surge_Smoke_test.robot" id="s1-s1-s1" name="Surge Smoke test">
-<test id="s1-s1-s1-t1" name="Open App and Wait">
+<robot generated="20170320 20:40:11.374" generator="Robot 3.0.1 (Python 2.7.13 on win32)">
+<suite source="C:\Dokumenty\surgetest" id="s1" name="Surgetest">
+<suite source="C:\Dokumenty\surgetest\Tests" id="s1-s1" name="Tests">
+<suite source="C:\Dokumenty\surgetest\Tests\Surge_Smoke_test2.robot" id="s1-s1-s1" name="Surge Smoke test2">
+<kw type="setup" name="Open Surge App" library="Surge">
 <kw name="Open Application" library="AppiumLibrary">
 <doc>Opens a new application to given Appium server.</doc>
 <arguments>
-<arg>http://vfalada:5f3d94d4-9ae8-4be8-813b-ae60d76c6ee2@ondemand.saucelabs.com:80/wd/hub</arg>
-<arg>appiumVersion=1.4.16</arg>
-<arg>name=Sample Test</arg>
+<arg>${serverurl}</arg>
+<arg>appiumVersion=${appiumversion}</arg>
+<arg>name=${testname}</arg>
 <arg>platformName=Android</arg>
-<arg>platformVersion=4.2</arg>
-<arg>deviceName=Android Emulator</arg>
-<arg>app=http://appium.s3.amazonaws.com/ContactManager.apk</arg>
+<arg>platformVersion=${platformversion}</arg>
+<arg>deviceName=${devicename}</arg>
+<arg>app=${app}</arg>
 </arguments>
-<status status="PASS" endtime="20170315 22:00:13.548" starttime="20170315 21:59:26.315"></status>
+<status status="PASS" endtime="20170320 20:40:28.364" starttime="20170320 20:40:12.089"></status>
 </kw>
-<kw name="Sleep" library="BuiltIn">
-<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" endtime="20170320 20:40:28.365" starttime="20170320 20:40:12.088"></status>
+</kw>
+<test id="s1-s1-s1-t1" name="Sign Up">
+<kw name="Navigate To Sign Up Screen" library="Surge">
+<kw name="Click Button" library="AppiumLibrary">
+<doc>Click button</doc>
 <arguments>
-<arg>60</arg>
+<arg>${signupbutton}</arg>
 </arguments>
-<msg timestamp="20170315 22:01:13.550" level="INFO">Slept 1 minute</msg>
-<status status="PASS" endtime="20170315 22:01:13.551" starttime="20170315 22:00:13.549"></status>
+<msg timestamp="20170320 20:40:28.834" level="INFO">'Sign Up'.</msg>
+<msg timestamp="20170320 20:40:28.864" level="INFO">Clicking element 'Sign Up'.</msg>
+<status status="PASS" endtime="20170320 20:40:29.199" starttime="20170320 20:40:28.369"></status>
 </kw>
-<kw name="Close Application" library="AppiumLibrary">
-<doc>Closes the current application.</doc>
-<status status="PASS" endtime="20170315 22:01:14.300" starttime="20170315 22:01:13.551"></status>
+<kw name="Wait Until Page Contains" library="AppiumLibrary">
+<doc>Waits until `text` appears on current page.</doc>
+<arguments>
+<arg>${signuplogo}</arg>
+</arguments>
+<status status="PASS" endtime="20170320 20:40:29.701" starttime="20170320 20:40:29.200"></status>
 </kw>
-<status status="PASS" endtime="20170315 22:01:14.301" critical="yes" starttime="20170315 21:59:26.313"></status>
+<status status="PASS" endtime="20170320 20:40:29.702" starttime="20170320 20:40:28.368"></status>
+</kw>
+<kw name="Input Valid Values To Fields" library="Surge">
+<kw name="Input Text" library="AppiumLibrary">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>${fieldemail}</arg>
+<arg>${user}</arg>
+</arguments>
+<msg timestamp="20170320 20:40:29.705" level="INFO">Typing text 's@t.com' into text field '//android.widget.EditText[@resource-id="com.lavendrapp.lavendr:id/et_email"]'</msg>
+<status status="PASS" endtime="20170320 20:40:35.364" starttime="20170320 20:40:29.704"></status>
+</kw>
+<kw name="Input Text" library="AppiumLibrary">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>${fieldname}</arg>
+<arg>tester</arg>
+</arguments>
+<msg timestamp="20170320 20:40:35.366" level="INFO">Typing text 'tester' into text field '//android.widget.EditText[@resource-id="com.lavendrapp.lavendr:id/et_first_name"]'</msg>
+<status status="PASS" endtime="20170320 20:40:41.670" starttime="20170320 20:40:35.365"></status>
+</kw>
+<kw name="Input Password" library="AppiumLibrary">
+<doc>Types the given password into text field identified by `locator`.</doc>
+<arguments>
+<arg>${fieldpassword}</arg>
+<arg>${password}</arg>
+</arguments>
+<msg timestamp="20170320 20:40:41.671" level="INFO">Typing password into text field '//android.widget.EditText[@resource-id="com.lavendrapp.lavendr:id/et_password"]'</msg>
+<status status="PASS" endtime="20170320 20:40:47.903" starttime="20170320 20:40:41.671"></status>
+</kw>
+<status status="PASS" endtime="20170320 20:40:47.904" starttime="20170320 20:40:29.703"></status>
+</kw>
+<kw name="Capture Page Screenshot" library="AppiumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into the log.</doc>
+<arguments>
+<arg>valuesFilled</arg>
+</arguments>
+<msg timestamp="20170320 20:40:49.955" html="yes" level="INFO">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="valuesFilled"&gt;&lt;img src="valuesFilled" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" endtime="20170320 20:40:49.956" starttime="20170320 20:40:47.905"></status>
+</kw>
+<kw name="Click Button" library="AppiumLibrary">
+<doc>Click button</doc>
+<arguments>
+<arg>${btnregister}</arg>
+</arguments>
+<msg timestamp="20170320 20:40:50.086" level="INFO">'Register'.</msg>
+<msg timestamp="20170320 20:40:50.164" level="INFO">Clicking element 'Register'.</msg>
+<status status="PASS" endtime="20170320 20:40:50.587" starttime="20170320 20:40:49.957"></status>
+</kw>
+<kw name="Skip Add Photo Page" library="Surge">
+<kw name="Wait Until Page Contains Element" library="AppiumLibrary">
+<doc>Waits until element specified with `locator` appears on current page.</doc>
+<arguments>
+<arg>${skipbutton}</arg>
+<arg>15</arg>
+</arguments>
+<status status="PASS" endtime="20170320 20:40:55.670" starttime="20170320 20:40:50.589"></status>
+</kw>
+<kw name="Click Element" library="AppiumLibrary">
+<doc>Click element identified by `locator`.</doc>
+<arguments>
+<arg>${skipbutton}</arg>
+</arguments>
+<msg timestamp="20170320 20:40:55.673" level="INFO">Clicking element '//android.widget.TextView[@resource-id="com.lavendrapp.lavendr:id/action_permission_skip"]'.</msg>
+<status status="PASS" endtime="20170320 20:40:55.927" starttime="20170320 20:40:55.671"></status>
+</kw>
+<status status="PASS" endtime="20170320 20:40:55.928" starttime="20170320 20:40:50.588"></status>
+</kw>
+<kw name="Skip Add Instagram Page" library="Surge">
+<kw name="Wait Until Page Contains Element" library="AppiumLibrary">
+<doc>Waits until element specified with `locator` appears on current page.</doc>
+<arguments>
+<arg>${skipbutton}</arg>
+<arg>15</arg>
+</arguments>
+<status status="PASS" endtime="20170320 20:40:56.574" starttime="20170320 20:40:55.930"></status>
+</kw>
+<kw name="Click Element" library="AppiumLibrary">
+<doc>Click element identified by `locator`.</doc>
+<arguments>
+<arg>${skipbutton}</arg>
+</arguments>
+<msg timestamp="20170320 20:40:56.576" level="INFO">Clicking element '//android.widget.TextView[@resource-id="com.lavendrapp.lavendr:id/action_permission_skip"]'.</msg>
+<status status="PASS" endtime="20170320 20:40:57.149" starttime="20170320 20:40:56.575"></status>
+</kw>
+<status status="PASS" endtime="20170320 20:40:57.150" starttime="20170320 20:40:55.929"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="AppiumLibrary">
+<doc>Waits until element specified with `locator` appears on current page.</doc>
+<arguments>
+<arg>${usericon}</arg>
+<arg>15</arg>
+</arguments>
+<status status="PASS" endtime="20170320 20:40:58.016" starttime="20170320 20:40:57.151"></status>
+</kw>
+<kw name="Capture Page Screenshot" library="AppiumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into the log.</doc>
+<arguments>
+<arg>signedUp</arg>
+</arguments>
+<msg timestamp="20170320 20:40:59.884" html="yes" level="INFO">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="signedUp"&gt;&lt;img src="signedUp" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" endtime="20170320 20:40:59.885" starttime="20170320 20:40:58.017"></status>
+</kw>
+<status status="PASS" endtime="20170320 20:40:59.886" critical="yes" starttime="20170320 20:40:28.366"></status>
 </test>
-<status status="PASS" endtime="20170315 22:01:14.303" starttime="20170315 21:59:25.332"></status>
+<test id="s1-s1-s1-t2" name="User Log Out">
+<kw name="Log Out" library="Surge">
+<kw name="Click Element" library="AppiumLibrary">
+<doc>Click element identified by `locator`.</doc>
+<arguments>
+<arg>${usericon}</arg>
+</arguments>
+<msg timestamp="20170320 20:40:59.892" level="INFO">Clicking element '//android.widget.ImageView[@resource-id="com.lavendrapp.lavendr:id/tab_icon_profile"]'.</msg>
+<status status="PASS" endtime="20170320 20:41:00.327" starttime="20170320 20:40:59.891"></status>
+</kw>
+<kw name="Wait Until Page Contains" library="AppiumLibrary">
+<doc>Waits until `text` appears on current page.</doc>
+<arguments>
+<arg>${powerLikes}</arg>
+<arg>30</arg>
+</arguments>
+<status status="PASS" endtime="20170320 20:41:02.647" starttime="20170320 20:41:00.328"></status>
+</kw>
+<kw name="Swipe On User Settings" library="Surge">
+<kw name="Swipe" library="AppiumLibrary">
+<doc>Swipe from one point to another point, for an optional duration.</doc>
+<arguments>
+<arg>570</arg>
+<arg>1879</arg>
+<arg>570</arg>
+<arg>670</arg>
+</arguments>
+<status status="PASS" endtime="20170320 20:41:03.186" starttime="20170320 20:41:02.649"></status>
+</kw>
+<status status="PASS" endtime="20170320 20:41:03.187" starttime="20170320 20:41:02.648"></status>
+</kw>
+<kw name="Click Button" library="AppiumLibrary">
+<doc>Click button</doc>
+<arguments>
+<arg>${accountsettings}</arg>
+</arguments>
+<msg timestamp="20170320 20:41:03.762" level="INFO">'Connect My Instagram'.</msg>
+<msg timestamp="20170320 20:41:03.831" level="INFO">'Premium Membership'.</msg>
+<msg timestamp="20170320 20:41:03.918" level="INFO">'Account Settings'.</msg>
+<msg timestamp="20170320 20:41:04.239" level="INFO">Clicking element 'Account Settings'.</msg>
+<status status="PASS" endtime="20170320 20:41:04.625" starttime="20170320 20:41:03.188"></status>
+</kw>
+<kw name="Swipe On Account Settings" library="Surge">
+<kw name="Swipe" library="AppiumLibrary">
+<doc>Swipe from one point to another point, for an optional duration.</doc>
+<arguments>
+<arg>570</arg>
+<arg>2500</arg>
+<arg>570</arg>
+<arg>150</arg>
+</arguments>
+<status status="PASS" endtime="20170320 20:41:05.141" starttime="20170320 20:41:04.627"></status>
+</kw>
+<status status="PASS" endtime="20170320 20:41:05.141" starttime="20170320 20:41:04.626"></status>
+</kw>
+<kw name="Wait Until Page Contains" library="AppiumLibrary">
+<doc>Waits until `text` appears on current page.</doc>
+<arguments>
+<arg>${logOutButton}</arg>
+</arguments>
+<status status="PASS" endtime="20170320 20:41:05.586" starttime="20170320 20:41:05.142"></status>
+</kw>
+<kw name="Click Element" library="AppiumLibrary">
+<doc>Click element identified by `locator`.</doc>
+<arguments>
+<arg>${logOutObject}</arg>
+</arguments>
+<msg timestamp="20170320 20:41:05.588" level="INFO">Clicking element '//android.widget.TextView[@text="Log Out"]'.</msg>
+<status status="PASS" endtime="20170320 20:41:06.211" starttime="20170320 20:41:05.587"></status>
+</kw>
+<kw name="Wait Until Page Contains" library="AppiumLibrary">
+<doc>Waits until `text` appears on current page.</doc>
+<arguments>
+<arg>${logOutButton}</arg>
+</arguments>
+<status status="PASS" endtime="20170320 20:41:06.391" starttime="20170320 20:41:06.212"></status>
+</kw>
+<kw name="Click Button" library="AppiumLibrary">
+<doc>Click button</doc>
+<arguments>
+<arg>${logOutButton}</arg>
+</arguments>
+<msg timestamp="20170320 20:41:06.820" level="INFO">'Cancel'.</msg>
+<msg timestamp="20170320 20:41:06.857" level="INFO">'Log Out'.</msg>
+<msg timestamp="20170320 20:41:06.896" level="INFO">Clicking element 'Log Out'.</msg>
+<status status="PASS" endtime="20170320 20:41:07.593" starttime="20170320 20:41:06.392"></status>
+</kw>
+<status status="PASS" endtime="20170320 20:41:07.594" starttime="20170320 20:40:59.890"></status>
+</kw>
+<kw name="Wait Until Page Contains" library="AppiumLibrary">
+<doc>Waits until `text` appears on current page.</doc>
+<arguments>
+<arg>${signupbutton}</arg>
+</arguments>
+<status status="PASS" endtime="20170320 20:41:07.828" starttime="20170320 20:41:07.596"></status>
+</kw>
+<kw name="Capture Page Screenshot" library="AppiumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into the log.</doc>
+<msg timestamp="20170320 20:41:13.900" html="yes" level="INFO">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="appium-screenshot-1.png"&gt;&lt;img src="appium-screenshot-1.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" endtime="20170320 20:41:13.901" starttime="20170320 20:41:07.829"></status>
+</kw>
+<status status="PASS" endtime="20170320 20:41:13.902" critical="yes" starttime="20170320 20:40:59.888"></status>
+</test>
+<test id="s1-s1-s1-t3" name="User Log In">
+<kw name="Log In" library="Surge">
+<arguments>
+<arg>${user}</arg>
+<arg>${password}</arg>
+</arguments>
+<kw name="Wait Until Page Contains Element" library="AppiumLibrary">
+<doc>Waits until element specified with `locator` appears on current page.</doc>
+<arguments>
+<arg>${logInLink}</arg>
+</arguments>
+<status status="PASS" endtime="20170320 20:41:13.992" starttime="20170320 20:41:13.906"></status>
+</kw>
+<kw name="Click Element" library="AppiumLibrary">
+<doc>Click element identified by `locator`.</doc>
+<arguments>
+<arg>${logInLink}</arg>
+</arguments>
+<msg timestamp="20170320 20:41:13.994" level="INFO">Clicking element '//android.widget.TextView[@resource-id="com.lavendrapp.lavendr:id/action_login"]'.</msg>
+<status status="PASS" endtime="20170320 20:41:14.375" starttime="20170320 20:41:13.993"></status>
+</kw>
+<kw name="Input Text" library="AppiumLibrary">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>${fieldemail}</arg>
+<arg>${user}</arg>
+</arguments>
+<msg timestamp="20170320 20:41:14.378" level="INFO">Typing text 's@t.com' into text field '//android.widget.EditText[@resource-id="com.lavendrapp.lavendr:id/et_email"]'</msg>
+<status status="PASS" endtime="20170320 20:41:20.500" starttime="20170320 20:41:14.377"></status>
+</kw>
+<kw name="Input Password" library="AppiumLibrary">
+<doc>Types the given password into text field identified by `locator`.</doc>
+<arguments>
+<arg>${fieldpassword}</arg>
+<arg>${password}</arg>
+</arguments>
+<msg timestamp="20170320 20:41:20.503" level="INFO">Typing password into text field '//android.widget.EditText[@resource-id="com.lavendrapp.lavendr:id/et_password"]'</msg>
+<status status="PASS" endtime="20170320 20:41:26.541" starttime="20170320 20:41:20.501"></status>
+</kw>
+<kw name="Click Button" library="AppiumLibrary">
+<doc>Click button</doc>
+<arguments>
+<arg>${logInButton}</arg>
+</arguments>
+<msg timestamp="20170320 20:41:27.182" level="INFO">'Log In'.</msg>
+<msg timestamp="20170320 20:41:27.290" level="INFO">Clicking element 'Log In'.</msg>
+<status status="PASS" endtime="20170320 20:41:27.725" starttime="20170320 20:41:26.542"></status>
+</kw>
+<status status="PASS" endtime="20170320 20:41:27.726" starttime="20170320 20:41:13.905"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="AppiumLibrary">
+<doc>Waits until element specified with `locator` appears on current page.</doc>
+<arguments>
+<arg>${usericon}</arg>
+<arg>15</arg>
+</arguments>
+<status status="PASS" endtime="20170320 20:41:31.077" starttime="20170320 20:41:27.727"></status>
+</kw>
+<kw name="Capture Page Screenshot" library="AppiumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into the log.</doc>
+<msg timestamp="20170320 20:41:32.961" html="yes" level="INFO">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="appium-screenshot-2.png"&gt;&lt;img src="appium-screenshot-2.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" endtime="20170320 20:41:32.962" starttime="20170320 20:41:31.078"></status>
+</kw>
+<status status="PASS" endtime="20170320 20:41:32.963" critical="yes" starttime="20170320 20:41:13.903"></status>
+</test>
+<test id="s1-s1-s1-t4" name="Delete User Account">
+<kw name="Delete Account" library="Surge">
+<kw name="Click Element" library="AppiumLibrary">
+<doc>Click element identified by `locator`.</doc>
+<arguments>
+<arg>${usericon}</arg>
+</arguments>
+<msg timestamp="20170320 20:41:32.967" level="INFO">Clicking element '//android.widget.ImageView[@resource-id="com.lavendrapp.lavendr:id/tab_icon_profile"]'.</msg>
+<status status="PASS" endtime="20170320 20:41:33.302" starttime="20170320 20:41:32.967"></status>
+</kw>
+<kw name="Wait Until Page Contains" library="AppiumLibrary">
+<doc>Waits until `text` appears on current page.</doc>
+<arguments>
+<arg>${powerLikes}</arg>
+<arg>30</arg>
+</arguments>
+<status status="PASS" endtime="20170320 20:41:39.632" starttime="20170320 20:41:33.303"></status>
+</kw>
+<kw name="Swipe On User Settings" library="Surge">
+<kw name="Swipe" library="AppiumLibrary">
+<doc>Swipe from one point to another point, for an optional duration.</doc>
+<arguments>
+<arg>570</arg>
+<arg>1879</arg>
+<arg>570</arg>
+<arg>670</arg>
+</arguments>
+<status status="PASS" endtime="20170320 20:41:40.239" starttime="20170320 20:41:39.635"></status>
+</kw>
+<status status="PASS" endtime="20170320 20:41:40.240" starttime="20170320 20:41:39.633"></status>
+</kw>
+<kw name="Click Button" library="AppiumLibrary">
+<doc>Click button</doc>
+<arguments>
+<arg>${accountsettings}</arg>
+</arguments>
+<msg timestamp="20170320 20:41:40.788" level="INFO">'Connect My Instagram'.</msg>
+<msg timestamp="20170320 20:41:40.838" level="INFO">'Premium Membership'.</msg>
+<msg timestamp="20170320 20:41:40.874" level="INFO">'Account Settings'.</msg>
+<msg timestamp="20170320 20:41:41.188" level="INFO">Clicking element 'Account Settings'.</msg>
+<status status="PASS" endtime="20170320 20:41:41.574" starttime="20170320 20:41:40.242"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="AppiumLibrary">
+<doc>Waits until element specified with `locator` appears on current page.</doc>
+<arguments>
+<arg>${privacy}</arg>
+</arguments>
+<status status="PASS" endtime="20170320 20:41:42.081" starttime="20170320 20:41:41.575"></status>
+</kw>
+<kw name="Click Element" library="AppiumLibrary">
+<doc>Click element identified by `locator`.</doc>
+<arguments>
+<arg>${privacy}</arg>
+</arguments>
+<msg timestamp="20170320 20:41:42.085" level="INFO">Clicking element '//android.widget.TextView[@text="Privacy" and @index="1"]'.</msg>
+<status status="PASS" endtime="20170320 20:41:42.480" starttime="20170320 20:41:42.083"></status>
+</kw>
+<kw name="Click Button" library="AppiumLibrary">
+<doc>Click button</doc>
+<arguments>
+<arg>${deleteaccountbutton}</arg>
+</arguments>
+<msg timestamp="20170320 20:41:42.995" level="INFO">'Delete Account'.</msg>
+<msg timestamp="20170320 20:41:43.222" level="INFO">Clicking element 'Delete Account'.</msg>
+<status status="PASS" endtime="20170320 20:41:43.586" starttime="20170320 20:41:42.481"></status>
+</kw>
+<kw name="Click Button" library="AppiumLibrary">
+<doc>Click button</doc>
+<arguments>
+<arg>${deleteaccountbutton}</arg>
+</arguments>
+<msg timestamp="20170320 20:41:44.195" level="INFO">'Cancel'.</msg>
+<msg timestamp="20170320 20:41:44.279" level="INFO">'Delete Account'.</msg>
+<msg timestamp="20170320 20:41:44.803" level="INFO">Clicking element 'Delete Account'.</msg>
+<status status="PASS" endtime="20170320 20:41:45.746" starttime="20170320 20:41:43.588"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="AppiumLibrary">
+<doc>Waits until element specified with `locator` appears on current page.</doc>
+<arguments>
+<arg>${logInLink}</arg>
+</arguments>
+<status status="PASS" endtime="20170320 20:41:46.076" starttime="20170320 20:41:45.747"></status>
+</kw>
+<status status="PASS" endtime="20170320 20:41:46.077" starttime="20170320 20:41:32.965"></status>
+</kw>
+<kw name="Capture Page Screenshot" library="AppiumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into the log.</doc>
+<msg timestamp="20170320 20:41:51.728" html="yes" level="INFO">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="appium-screenshot-3.png"&gt;&lt;img src="appium-screenshot-3.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" endtime="20170320 20:41:51.732" starttime="20170320 20:41:46.078"></status>
+</kw>
+<status status="PASS" endtime="20170320 20:41:51.733" critical="yes" starttime="20170320 20:41:32.964"></status>
+</test>
+<kw type="teardown" name="Close Application" library="AppiumLibrary">
+<doc>Closes the current application.</doc>
+<status status="PASS" endtime="20170320 20:41:52.758" starttime="20170320 20:41:51.736"></status>
+</kw>
+<status status="PASS" endtime="20170320 20:41:52.759" starttime="20170320 20:40:11.485"></status>
 </suite>
-<status status="PASS" endtime="20170315 22:01:14.311" starttime="20170315 21:59:25.323"></status>
+<status status="PASS" endtime="20170320 20:41:52.765" starttime="20170320 20:40:11.481"></status>
 </suite>
-<status status="PASS" endtime="20170315 22:01:14.323" starttime="20170315 21:59:24.993"></status>
+<status status="PASS" endtime="20170320 20:41:52.773" starttime="20170320 20:40:11.429"></status>
 </suite>
 <statistics>
 <total>
-<stat fail="0" pass="1">Critical Tests</stat>
-<stat fail="0" pass="1">All Tests</stat>
+<stat fail="0" pass="4">Critical Tests</stat>
+<stat fail="0" pass="4">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat fail="0" id="s1" name="SurgeTest" pass="1">SurgeTest</stat>
-<stat fail="0" id="s1-s1" name="Tests" pass="1">SurgeTest.Tests</stat>
-<stat fail="0" id="s1-s1-s1" name="Surge Smoke test" pass="1">SurgeTest.Tests.Surge Smoke test</stat>
+<stat fail="0" id="s1" name="Surgetest" pass="4">Surgetest</stat>
+<stat fail="0" id="s1-s1" name="Tests" pass="4">Surgetest.Tests</stat>
+<stat fail="0" id="s1-s1-s1" name="Surge Smoke test2" pass="4">Surgetest.Tests.Surge Smoke test2</stat>
 </suite>
 </statistics>
 <errors>

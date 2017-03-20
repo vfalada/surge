@@ -1,0 +1,1 @@
+deleteAccountButton = 'Delete Account'

@@ -1,0 +1,1 @@
+skipButton = '//android.widget.TextView[@resource-id="com.lavendrapp.lavendr:id/action_permission_skip"]'

@@ -1,4 +1,4 @@
 bin/sc -u vfalada -k 5f3d94d4-9ae8-4be8-813b-ae60d76c6ee2
 
 
-curl -u vfalada:5f3d94d4-9ae8-4be8-813b-ae60d76c6ee2 -X POST -H "Content-Type: application/octet-stream" https://saucelabs.com/rest/v1/storage/vfalada/surge?overwrite=true --data-binary @surge.apk
+curl -u vfalada:5f3d94d4-9ae8-4be8-813b-ae60d76c6ee2 -X POST -H "Content-Type: application/octet-stream" https://saucelabs.com/rest/v1/storage/vfalada/surge.apk?overwrite=true --data-binary @surge.apk
