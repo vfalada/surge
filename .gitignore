@@ -3,7 +3,6 @@
 .project
 .pydevproject
 saucelabskey.txt
-*.png
 *.docx
 *.pdf
 *.pyc
